@@ -1,0 +1,136 @@
+body{
+background: rgb(226,226,226); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe',GradientType=0 ); /* IE6-9 */
+}
+div.row nav{
+    margin-bottom:0px;
+}
+.carousel-inner{
+    max-height: 330px;
+    overflow: hidden;
+}
+
+a .logo{
+    width: 180px;
+}
+footer{
+    background: #101010;
+    text-align: center;
+    padding: 10px;
+    color:#fff;
+}
+.homecontent{
+    background: #eee;
+    padding: 10px;
+    border-radius: 10px;
+   margin: 5px;
+      box-shadow: 5px 5px 5px whitesmoke;
+}
+.homeside{
+    background:#eee;
+    text-align: center;
+    padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+   box-shadow: 5px 5px 5px whitesmoke;
+}
+.admin-form{
+    margin-top: 50px;
+border: 1px solid #b4adad;
+background: white;
+border-radius: 15px;
+box-shadow: 5px 5px 5px #837e7e;
+overflow: hidden;
+}
+.homecontent .admin-form h3{
+    margin-top: 0px;
+margin-left: -15px;
+margin-right: -15px;    
+}
+.homeside img{
+    margin-left: auto;
+    margin-right: auto;
+}
+.homeside p{
+    padding: 10px;
+    font-family: serif; 
+}
+.homecontent h3,.homenews h3,.homeside h3{
+    background: dodgerblue;
+color: white;
+padding: 10px;
+margin-left: -8px;
+margin-right: -9px;
+margin-top: -10px;
+}
+.timingtable{
+    background: #eee;
+    padding: 10px;
+    border-radius: 10px;
+   margin: 5px;
+   margin-top: 15px;
+      box-shadow:5px 5px 5px whitesmoke;
+}
+.timingtable h4{
+    background: dodgerblue;
+color: white;
+padding: 10px;
+margin-left: -8px;
+margin-right: -9px;
+margin-top: -10px;
+}
+.card-content{
+    text-align: center;
+font-size: 2em;
+line-height: 2em;
+margin-top: 60px;
+}
+.card-side li:hover{
+    background: white;
+    color: dodgerblue;
+}
+
+.balance-p{
+    text-align: center;
+    background: #d58512;
+    color :white;
+    padding: 10px;
+}
+.card-side li{
+    background: dodgerblue;
+padding: 10px;
+margin-top: 10px;
+list-style: none;
+text-align: left;
+color: white;
+}
+.card-side li a{
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+.card-side li a:hover{
+    color: dodgerblue;
+}
+.route-h3{
+    overflow: hidden;
+background: #aadaff;
+color: white;
+padding: 10px;
+border: 1px solid aliceblue;
+border-radius: 6px;
+color: #4d4b4b;
+}
+.homenews{
+    margin: 5px;
+    background: #eee;
+    padding: 10px;
+    border-radius: 10px;   
+       box-shadow: 5px 5px 5px whitesmoke;
+}
+.padding-label{
+    padding-top: 5px;
+}
