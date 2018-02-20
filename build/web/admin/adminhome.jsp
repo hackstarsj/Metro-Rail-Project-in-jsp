@@ -17,19 +17,29 @@
     <div class="col-lg-9">
         <main>
             <div class="homecontent">
-            <h3>Welcome To Metro Rail.</h3>
-            <p>METRORail moves along the street just like other vehicles.</p>
-            <p> The tracks are separated from the roadway by large raised white domes warning drivers to stay off the tracks. METRORail is very quiet. In fact, the trains are quieter than buses and most cars. So, whether you are riding METRORail, or just walking or driving near the trains and tracks, it is important to stay alert and follow the safety rules of METRORail. </p>
+            <h3>Welcome Admin</h3>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="admin-box red-bg"><h4 class="home-box-h4">Total Station</h4><span class="home-box-span">5</span></div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="admin-box green-bg"><h4 class="home-box-h4">Total Routes</h4><span class="home-box-span">5</span></div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="admin-box pink-bg"><h4 class="home-box-h4">Total Train</h4><span class="home-box-span">5</span></div>                        
+                </div>
+                <div class="col-lg-4">
+                    <div class="admin-box orange-bg"><h4 class="home-box-h4">Total Complaints</h4><span class="home-box-span">5</span></div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="admin-box blue-bg"><h4 class="home-box-h4">Total Card Issues</h4><span class="home-box-span">5</span></div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="admin-box purple-bg"><h4 class="home-box-h4">Total Trips</h4><span class="home-box-span">5</span></div>
+                </div>
             </div>
-            <div class="homenews">
-               <h3>
-                Latest News
-              </h3>
-                <marquee direction="up" scrolldelay="500" behavior=""scroll>
-                    <p>MEGA invites bids for ?Design and Construction Underground Stations and Tunnels.</p>
-                    <p>The Government of India has finalised a plan to augment and launch mass rapid transportation systems across 50 cities to minimise commuter woes.</p>
-                </marquee>
-           </div>            
+                
+            </div>
 
         </main>
     </div>

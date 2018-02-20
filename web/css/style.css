@@ -45,6 +45,65 @@ border-radius: 15px;
 box-shadow: 5px 5px 5px #837e7e;
 overflow: hidden;
 }
+.admin-box {
+    position: relative;
+    height: 200px;
+    width:100%;
+    padding: 10px;
+    margin: 10px 0px 10px 0px;
+    box-shadow: 3px 3px 3px grey;
+    font-family: serif;
+}
+.home-box-span{
+    position: absolute;
+bottom: 25px;
+font-size: 3em;
+left: 20px;
+}
+.routes-div .col-lg-12 {
+    margin-bottom: 8px;
+}
+.snackbar{
+    background: black;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    display: none;
+    position: fixed;
+    bottom: 0;
+}
+.red-bg{
+    background: #c9302c;
+    color:#FFF;
+}
+.pink-bg{
+    background:#c7254e;
+    color:#FFF;
+}
+.home-box-h4{
+    font-size: 2.4em;
+font-weight: bold;
+}
+.blue-bg{
+    background:#2e6da4;
+    color:#FFF;
+}
+.green-bg{
+    background: #398439;
+    color:#FFF;
+}
+.yellow-bg{
+    background: #ff0;
+    color:#080808;
+}
+.orange-bg{
+    background: orange;
+    color:#FFF;
+}
+.purple-bg{
+    background: purple;
+    color: #FFF;
+}
 .homecontent .admin-form h3{
     margin-top: 0px;
 margin-left: -15px;

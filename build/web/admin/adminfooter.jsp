@@ -8,3 +8,7 @@
 <footer>
     &copy MetroRail Project Admin Panel
 </footer>
+<div class="snackbar">
+    
+</div>
+<script src="../js/admin.js"></script>
