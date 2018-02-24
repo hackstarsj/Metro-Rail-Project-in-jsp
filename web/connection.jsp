@@ -21,5 +21,11 @@ try {
          {
             out.println("Unable to connect to database"+ex);
          } 
-%>
 
+%>
+<%!
+  void getCompaints(){
+      
+  }
+   
+%>
