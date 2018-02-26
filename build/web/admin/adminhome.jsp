@@ -1,3 +1,5 @@
+<% String pages="home"; %>
+<%@include file="secure.jsp" %>
 <!Doctype html>
 <html> 
 <head> 

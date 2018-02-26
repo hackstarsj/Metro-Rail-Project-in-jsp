@@ -4,24 +4,32 @@
 <html> 
 <head> 
 <title>Connection with mysql database</title>
+<%! String pages="home"; %>
 <!--====================================Script and StyleSheet=====================================-->
 <%@ include file="scriptsstyle.jsp" %>  
     <jsp:useBean id="obj" class="com.metrorail.DataBaseSource"/>  
       
     <%
-        if(obj.InsertData("INSERT INTO `admin`(`a_name`, `a_address`, `phone_num`, `email`, `age`, `gender`, `permission`, `designation`, `password`) VALUES ('a','b','d','e',1,'m','1','d','11')")){
-            out.print("success");
-        }
-        else{
-            out.println("failed");
-        }
-        
-        List<Map<String,String>> list=obj.fetchAllData("select * from admin");
-        for (Map<String, String> map : list)
-        {
-            out.println("Key is "+map.entrySet()+" value : "+map.get("id"));
-        }
-        
+//        if(obj.InsertData("INSERT INTO `admin`(`a_name`, `a_address`, `phone_num`, `email`, `age`, `gender`, `permission`, `designation`, `password`) VALUES ('a','b','d','e',1,'m','1','d','11')")){
+//            out.print("success");
+//        }
+//        else{
+//            out.println("failed");
+//        }
+//        
+//        List<Map<String,String>> list=obj.fetchAllData("select * from admin");
+//        for (Map<String, String> map : list)
+//        {
+//            out.println("Key is "+map.entrySet()+" value : "+map.get("id"));
+//        }
+//        if(obj.InsertData("UPDATE `admin` SET `a_name`='rahul' WHERE id=2")){
+//                        out.println("suc2");
+//
+//        }else{
+//                        out.println("failed2");
+//
+//        }
+//        
 
 
     %>  

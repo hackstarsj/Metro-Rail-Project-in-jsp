@@ -12,6 +12,7 @@ package com.metrorail;
 
 import com.mysql.jdbc.Connection;
 import static java.lang.System.out;
+import java.math.BigDecimal;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -53,7 +54,7 @@ public class DataBaseSource {
       while(executeQuery.next())
       {  
           rows=new HashMap();
-          for(int i=1;i<numColumns;i++){
+          for(int i=1;i<=numColumns;i++){
               rows.put(res.getColumnName(i),executeQuery.getString(i));
           }
 
@@ -67,6 +68,17 @@ public class DataBaseSource {
         Statement s=connection.createStatement();
                int ss= s.executeUpdate(sql);
                 return ss>0;
+    }
+    public BigDecimal InsertDataWithId(String sql) throws SQLException{
+        
+        Statement s=connection.createStatement();
+               int ss= s.executeUpdate(sql,Statement.RETURN_GENERATED_KEYS );
+               ResultSet rs = s.getGeneratedKeys(); 
+               java.math.BigDecimal idColVar = null;
+               while (rs.next()) {
+              idColVar = rs.getBigDecimal(1); 
+               }
+               return idColVar;
     }
     
 }

@@ -7,7 +7,7 @@
 <%@page import="java.util.Objects"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <header>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse ">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -19,11 +19,11 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-          <li <% if(Objects.equals(request.getServletPath().toString().trim(), "/index.jsp")){ %>class="active"<% } %>><a href="index.jsp"><i class="fa fa-home"></i> Home</a></li>
-          <li <% if(Objects.equals(request.getServletPath().toString().trim(), "/complaint.jsp")){ %>class="active"<% } %>><a href="complaint.jsp"><i class="fa fa-comment"></i> Complaints</a></li>
-        <li <% if(Objects.equals(request.getServletPath().toString().trim(), "/timing.jsp")){ %>class="active"<% } %>><a href="timing.jsp"><i class="fa fa-clock-o"></i> Timing</a></li>
-        <li <% if(Objects.equals(request.getServletPath().toString().trim(), "/fair.jsp")){ %>class="active"<% } %>><a href="fair.jsp"><i class="fa fa-map"></i> Fair and Route</a></li>
-        <li <% if(Objects.equals(request.getServletPath().toString().trim(), "/card.jsp")){ %>class="active"<% } %>><a href="card.jsp"><i class="fa fa-credit-card"></i> Metro Card</a></li>
+          <li <% if(Objects.equals(pages, "home")){ %>class="active"<% } %>><a href="index.jsp"><i class="fa fa-home"></i> Home</a></li>
+          <li <% if(Objects.equals(pages, "complaint")){ %>class="active"<% } %>><a href="complaint.jsp"><i class="fa fa-comment"></i> Complaints</a></li>
+        <li <% if(Objects.equals(pages, "timing")){ %>class="active"<% } %>><a href="timing.jsp"><i class="fa fa-clock-o"></i> Timing</a></li>
+        <li <% if(Objects.equals(pages, "fair")){ %>class="active"<% } %>><a href="fair.jsp"><i class="fa fa-map"></i> Fair and Route</a></li>
+        <li <% if(Objects.equals(pages, "card")){ %>class="active"<% } %>><a href="card.jsp"><i class="fa fa-credit-card"></i> Metro Card</a></li>
       </ul>
     </div>
   </div>

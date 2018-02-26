@@ -10,10 +10,11 @@
         String[] pos=request.getParameterValues("pos[]");
         String[] dis=request.getParameterValues("dis[]");
         String r_name=request.getParameter("route");
-        BigDecimal ids=obj.InsertDataWithId("INSERT INTO `route`(`r_name`) VALUES ('"+r_name+"')");
+        BigDecimal ids=obj.InsertDataWithId("UPDATE `route` SET `r_name`='"+r_name+"' WHERE id='"+request.getParameter("id")+"'");
         //out.println("Big id"+ids);
+        obj.InsertData("DELETE from route_details where route_id='"+request.getParameter("id")+"'");
         for(int i=0;i<station.length;i++){
-        String sql = "INSERT INTO `route_details`(`route_id`, `station_id`, `s_order_num`, `length_from_start`) VALUES ('"+ids+"','"+station[i]+"','"+pos[i]+"','"+dis[i]+"')";
+        String sql = "INSERT INTO `route_details`(`route_id`, `station_id`, `s_order_num`, `length_from_start`) VALUES ('"+request.getParameter("id")+"','"+station[i]+"','"+pos[i]+"','"+dis[i]+"')";
             if (obj.InsertData(sql)) {
                 status = true;
             } else {
@@ -23,21 +24,17 @@
     }
     List<Map<String, String>> list = obj.fetchAllData("select * from station");
     String pages="route";
-    List<Map<String,String>> allroutes=obj.fetchAllData("select * from route");
-    List<Map<String,String>> newRoutes=new ArrayList<Map<String,String>>();
-    for(int  i=0;i<allroutes.size();i++){
-        Map hashmap1=allroutes.get(i);
-        List<Map<String,String>> allstations=obj.fetchAllData("select * from route_details where route_id='"+hashmap1.get("id")+"'");  
-        //out.println("Size"+allstations.size());
-        hashmap1.put("count",allstations.size());
-        //allroutes.add(i,hashmap1);
-        newRoutes.add(hashmap1);
+    List<Map<String,String>> allroutes=obj.fetchAllData("select * from route where id='"+request.getParameter("id")+"'");
+    if(allroutes.size()<=0){
+            response.sendRedirect("route.jsp");
     }
-
+    List<Map<String,String>> allstations=obj.fetchAllData("select * from route_details where route_id='"+request.getParameter("id")+"'");  
+        
 %>
 <!Doctype html>
 <html> 
-<head> 
+<head>
+    <meta charset="utf-8">
 <title>Connection with mysql database</title>
 <!--====================================Script and StyleSheet=====================================-->
 <%@ include file="adminscript.jsp" %>  
@@ -61,7 +58,8 @@
                     <label class="control-label">Route Name. : </label>
                 </div>
                 <div class="col-lg-3 col-xs-6">
-                    <input class="form-control" name="route" placeholder="Route Name." type="text">
+                    <input type="hidden" name="ids" value="<%=request.getParameter("id") %>">
+                    <input class="form-control" name="route" placeholder="Route Name." type="text" value="<%=allroutes.get(0).get("r_name") %>">
                 </div>
             </div>
             <div class="table-responsive">
@@ -72,20 +70,35 @@
                     <th>Distance</th>
                     <th>Action</th>
                 </tr>
+                <%
+                    for(int k=0;k<allstations.size();k++){   
+                        Map routemap=allstations.get(k);
+                    %>
                 <tr>
                     <td>
                         <select class="form-control" name="station[]">
+                            
                             <% for(int i=0;i<list.size();i++){
                                 Map hashmap=list.get(i);
-                             out.println("<option value='"+hashmap.get("id")+"'>"+hashmap.get("s_name")+"</option>");   
+                                     if(Objects.equals(hashmap.get("id"),routemap.get("station_id"))){
+                                      out.println("<option value='"+hashmap.get("id")+"' selected>"+hashmap.get("s_name")+"</option>");   
+
+                                     }else{
+                                      out.println("<option value='"+hashmap.get("id")+"'>"+hashmap.get("s_name")+"</option>");   
+   
+                                     } 
+                                         
                             }
                             %>
                         </select>
                     </td>
-                    <td><input type="text" class="form-control" placeholder="Position" name="pos[]"></td>
-                    <td><input type="text" class="form-control" placeholder="Distance" name="dis[]"></td>
+                    <td><input type="text" class="form-control" placeholder="Position" name="pos[]" value="<%=routemap.get("s_order_num") %>"></td>
+                    <td><input type="text" class="form-control" placeholder="Distance" name="dis[]" value="<%=routemap.get("length_from_start") %>"></td>
                     <td><button class="btn btn-danger btn-block btn-delete-station">Delete </button></td>
                 </tr>
+                <%
+                }
+                %>
             </table>
             </div>
            <div class="row form-group">
@@ -94,16 +107,16 @@
                 </div>
 
                <div class="col-lg-6">
-                   <input class="btn btn-success btn-block"  type="submit" value="Add Route" name="submit"/>
+                   <input class="btn btn-success btn-block"  type="submit" value="Edit Route" name="submit"/>
                 </div>
             </div>
             <div class="form-group">
                <%  if (request.getParameter("submit") != null) {
                                             if (status) {
-                                                out.println("<p class='alert alert-success'>Added Successfully.</p>");
+                                                out.println("<p class='alert alert-success'>Updated Successfully.</p>");
 
                                             } else {
-                                                out.println("<p class='alert alert-danger'>Error During Adding Routes.</p>");
+                                                out.println("<p class='alert alert-danger'>Error During Updating Routes.</p>");
 
                                             }
                                         }
@@ -111,40 +124,6 @@
            </div>
 
              </form>
-            </div>
-           <div class="timingtable">
-            <h4>List Of All Routes </h4>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="table-responsive">          
-                                <table class="table table-striped table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <td>Route Id</td>
-                                            <td>Routes Name</td>
-                                            <td>No. of Station</td>
-                                            <td>Action</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <%
-                                         for(int i=0;i<newRoutes.size();i++){
-                                           Map hashmaps=newRoutes.get(i);
-                                          
-                                       out.println("<tr>"+
-                                            "<td>"+hashmaps.get("id")+"</td>"+
-                                            "<td>"+hashmaps.get("r_name")+"</td>"+
-                                            "<td>"+hashmaps.get("count")+"</td>"+
-                                            "<td><button class='btn-edit-routes btn btn-warning' data-id='"+hashmaps.get("id")+"'>Edit</button></td>"+
-                                            "</tr>");
-                                            }
-                                         %>       
-                                    </tbody>
-                                    
-                                </table>
-                        </div>
-                    </div>
-                </div>
             </div>
         </main>
     </div>

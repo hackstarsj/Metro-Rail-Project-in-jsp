@@ -10,6 +10,8 @@
 <div class="container-fluid">
     <div class="row">
 <!--=====================================Header=======================================-->
+<%! String pages="card"; %>
+<%! String spages="card"; %>
 <%@ include file="nav.jsp" %>
 <!--=====================================Header End=======================================-->
     </div>

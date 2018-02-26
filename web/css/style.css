@@ -12,7 +12,9 @@ div.row nav{
     max-height: 330px;
     overflow: hidden;
 }
-
+.display-block{
+    display: block;
+}
 a .logo{
     width: 180px;
 }
@@ -147,7 +149,7 @@ font-size: 2em;
 line-height: 2em;
 margin-top: 60px;
 }
-.card-side li:hover{
+.card-side li:hover,.card-side li.active{
     background: white;
     color: dodgerblue;
 }
