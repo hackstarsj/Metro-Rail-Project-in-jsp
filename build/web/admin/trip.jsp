@@ -23,6 +23,12 @@
     List<Map<String, String>> trains = obj.fetchAllData("select * from trains");
     List<Map<String, String>> station = obj.fetchAllData("select * from station");
     String pages="trip";
+    
+    List<Map<String,String>> alltrips=obj.fetchAllData("SELECT d.*,a.r_name as routename,b.train_no as trainname,count(c.trip_num) as totalcount  FROM  trip as d,route as a,trains as b,trip_details as c WHERE a.`id`=d.`route_id` and b.id=d.`train_id` and c.trip_num=d.`id` GROUP by c.trip_num");
+    
+
+
+
 
 %>
 <!Doctype html>
@@ -138,28 +144,26 @@
                                 <table class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <td>Trip Code</td>
-                                            <td>Train No.</td>
-                                            <td>Route</td>
-                                            <td>No. of Station</td>
-                                            <td>Action</td>
+                                            <th>Trip Code</th>
+                                            <th>Train No.</th>
+                                            <th>Route</th>
+                                            <th>No. of Station</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <%
+                                            for(int i=0;i<alltrips.size();i++){
+                                                %>
                                         <tr>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>545</td>
-                                            <td>7</td>
-                                            <td><button class="edit-trip btn btn-warning" data-id="1">Edit</button></td>
+                                            <td><%=alltrips.get(i).get("trip_code") %></td>
+                                            <td><%=alltrips.get(i).get("train_no") %></td>
+                                            <td><%=alltrips.get(i).get("r_name") %></td>
+                                            <td><%=alltrips.get(i).get("totalcount") %></td>
+                                            <td><button class="edit-trip btn btn-warning" data-id="<%=alltrips.get(i).get("id") %>">Edit</button></td>
                                         </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>545</td>
-                                            <td>7</td>
-                                            <td><button class="edit-trip btn btn-warning" data-id="1">Edit</button></td>
-                                        </tr>
+                                        <% }
+                                           %>         
                                     </tbody>
                                     
                                 </table>

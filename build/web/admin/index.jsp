@@ -14,7 +14,8 @@
      List<Map<String,String>> list= obj.fetchAllData("SELECT * FROM `admin` where email='"+request.getParameter("email")+"' and password='"+request.getParameter("password")+"'");
      if(list.size()>0){
          status=true;
-         session.setAttribute("email",request.getParameter("email"));  
+         session.setAttribute("email",request.getParameter("email")); 
+         session.setAttribute("id",list.get(0).get("id"));
      }else{
          status=false;
      }

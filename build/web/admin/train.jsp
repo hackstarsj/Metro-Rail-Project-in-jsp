@@ -41,7 +41,7 @@
                     <label class="control-label">Train No. : </label>
                 </div>
                 <div class="col-lg-3 col-xs-12">
-                    <input class="form-control" name="trainno" placeholder="Train No." type="text">
+                    <input class="form-control" name="trainno" placeholder="Train No." type="text" required>
                 </div>
             </div>
             <div class="row form-group">
@@ -49,7 +49,7 @@
                     <label class="control-label">Capacity :</label> 
                 </div>
                 <div class="col-lg-3 col-xs-12">
-                    <input class="form-control" name="cap" placeholder="Capacity" type="text">
+                    <input class="form-control" name="cap" placeholder="Capacity" type="text" required>
                 </div>
             </div>
            <div class="row form-group">
@@ -80,10 +80,10 @@
                                 <table class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <td>Train Id</td>
-                                            <td>Train No.</td>
-                                            <td>Capacity</td>
-                                            <td>Action</td>
+                                            <th>Train Id</th>
+                                            <th>Train No.</th>
+                                            <th>Capacity</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>

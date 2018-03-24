@@ -23,7 +23,7 @@
           <li><a href="../complaint.jsp"><i class="fa fa-comment"></i> Complaints</a></li>
           <li><a href="../timing.jsp"><i class="fa fa-clock-o"></i> Timing</a></li>
           <li><a href="../fair.jsp"><i class="fa fa-map"></i> Fair and Route</a></li>
-          <li><a href="card.jsp"><i class="fa fa-credit-card"></i> Metro Card</a></li>
+          <li><a href="../card.jsp"><i class="fa fa-credit-card"></i> Metro Card</a></li>
       </ul>
     </div>
   </div>

@@ -8,3 +8,4 @@
 <footer>
     &copy MetroRail Project By Sanjeev
 </footer>
+<script src="js/user.js"></script>

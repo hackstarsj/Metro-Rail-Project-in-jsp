@@ -88,47 +88,11 @@ $(document).ready(function(){
        ApiService("train",jsonobj,"Error During Editing Train!","Successfully Updated!")
     });
     
-    $(document).on("click",".edit-trip",function(){
+$(document).on("click",".edit-trip",function(){
         var id=$(this).data("id");
-        var i=0;
-        $(this).text("Save");
-        $(this).removeClass("btn-warning");
-        $(this).addClass("btn-success");
-        $(this).removeClass("edit-trip");
-        $(this).addClass("save-trip");        
-        $(this).parents("tr").children("td").each(function(){
-            var vals=$(this).text();
-            if(i===4){
-                
-                return true;
-            }
-            i++;
-            console.log($(this).text());
-            $(this).html("<input type='text' value='"+vals+"' class='form-control'>");
-            
-        });    
+     location="edit_trip.jsp?id="+id;
     });
     
-    $(document).on("click",".save-trip",function(){
-        var i=0;
-        $(this).text("Edit");
-        $(this).addClass("btn-warning");
-        $(this).removeClass("btn-success");
-        $(this).addClass("edit-trip");
-        $(this).removeClass("save-trip");        
-
-       $(this).parents("tr").children("td").each(function(){
-           if(i===4)
-           {
-               return true;
-           }
-           i++;
-           var vals=$(this).children("input").val();
-           console.log($(this).children("input").val());
-           $(this).html(vals);
-       });
-       showSnackMessage("Successfully Edited");
-    });
 
     $(document).on("click",".edit-fair",function(){
         var id=$(this).data("id");
@@ -140,7 +104,7 @@ $(document).ready(function(){
         $(this).addClass("save-fair");        
         $(this).parents("tr").children("td").each(function(){
             var vals=$(this).text();
-            if(i===5){
+            if(i===4){
                 
                 return true;
             }
@@ -148,7 +112,7 @@ $(document).ready(function(){
             console.log($(this).text());
             $(this).html("<input type='text' value='"+vals+"' class='form-control'>");
             
-        });    
+        });
     });
     
     $(document).on("click",".save-fair",function(){
@@ -158,40 +122,40 @@ $(document).ready(function(){
         $(this).removeClass("btn-success");
         $(this).addClass("edit-fair");
         $(this).removeClass("save-fair");        
+        var jsonobj={};
 
        $(this).parents("tr").children("td").each(function(){
-           if(i===5)
+           if(i===4)
            {
                return true;
            }
            i++;
+          jsonobj[$(this).data("name")]=$(this).children("input").val();
+
            var vals=$(this).children("input").val();
            console.log($(this).children("input").val());
            $(this).html(vals);
        });
-       showSnackMessage("Successfully Edited");
+              jsonobj['id']=$(this).data('id');
+       ApiService("fair",jsonobj,"Error During Editing Fair!","Successfully Updated!");
+
+     //  showSnackMessage("Successfully Edited");
     });
     
      $(document).on("click",".edit-reply",function(){
         var id=$(this).data("id");
         var i=0;
-        $(this).text("Replied");
-        $(this).removeClass("btn-warning");
-        $(this).addClass("btn-success");
-        $(this).removeClass("edit-reply");
-        $(this).addClass("save-reply");        
-        $(this).parents("tr").children("td").each(function(){
-            var vals=$(this).text();
-            if(i===4){
-                
-                return true;
-            }
-            i++;
-            console.log($(this).text());
-            $(this).html("<input type='text' value='"+vals+"' class='form-control'>");
-            
-        });    
-    });
+//        $(this).text("Replied");
+//        $(this).removeClass("btn-warning");
+//        $(this).addClass("btn-success");
+//        $(this).removeClass("edit-reply");
+//        $(this).addClass("save-reply");        
+        $("#r_name").text($(this).parents('tr').children("td:eq(1)").text());
+        $("#r_email").text($(this).parents('tr').children("td:eq(2)").text());
+        $("#r_msg").text($(this).parents('tr').children("td:eq(3)").text());
+        $("#in_remail").val($(this).parents('tr').children("td:eq(2)").text());
+        $("#in_rid").val($(this).parents('tr').children("td:eq(0)").text());
+     });
     
     $(document).on("click",".save-reply",function(){
         var i=0;
@@ -222,17 +186,9 @@ $(document).ready(function(){
         $(this).addClass("btn-success");
         $(this).removeClass("edit-cards");
         $(this).addClass("save-cards");        
-        $(this).parents("tr").children("td").each(function(){
-            var vals=$(this).text();
-            if(i===4){
-                
-                return true;
-            }
-            i++;
-            console.log($(this).text());
-            $(this).html("<input type='text' value='"+vals+"' class='form-control'>");
-            
-        });    
+        $("#r_email").text($(this).parents("tr").children("td:eq(1)").text());
+        $("#in_rid").val($(this).parents("tr").children("td:eq(0)").text());
+        $("#in_remail").val($(this).parents("tr").children("td:eq(1)").text());
     });
     
     $(document).on("click",".save-cards",function(){

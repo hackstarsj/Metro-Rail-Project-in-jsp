@@ -10,6 +10,7 @@
             <h3>Manage System</h3>
             <img src="../img/admin.png" class="img-responsive">
             <ul style="padding-left: 0;">
+                <li <% if(Objects.equals(pages, "home")){ %>class="active"<% } %>><a href="index.jsp">Dashboard</a></li>
                 <li <% if(Objects.equals(pages, "station")){ %>class="active"<% } %>><a href="station.jsp">Manage Station</a></li>
                 <li <% if(Objects.equals(pages, "route")){ %>class="active"<% } %>><a href="route.jsp">Manage Route</a></li>
                 <li <% if(Objects.equals(pages, "train")){ %>class="active"<% } %>><a href="train.jsp">Manage Train</a></li>

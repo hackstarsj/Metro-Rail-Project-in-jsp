@@ -120,10 +120,10 @@
                                 <table class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <td>Route Id</td>
-                                            <td>Routes Name</td>
-                                            <td>No. of Station</td>
-                                            <td>Action</td>
+                                            <th>Route Id</th>
+                                            <th>Routes Name</th>
+                                            <th>No. of Station</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>

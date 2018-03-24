@@ -89,11 +89,11 @@
                                         <table class="table table-striped table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <td>Station Id</td>
-                                                    <td>Station Name</td>
-                                                    <td>Latitude</td>
-                                                    <td>Longitude</td>
-                                                    <td>Action</td>
+                                                    <th>Station Id</th>
+                                                    <th>Station Name</th>
+                                                    <th>Latitude</th>
+                                                    <th>Longitude</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
