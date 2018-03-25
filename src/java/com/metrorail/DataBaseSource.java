@@ -10,6 +10,7 @@
  */
 package com.metrorail;
 import com.mysql.jdbc.Connection;
+import java.io.IOException;
 import static java.lang.System.out;
 import java.math.BigDecimal;
 import java.sql.DriverManager;
@@ -108,9 +109,110 @@ public class DataBaseSource {
     
     /**
      *
+     * @param pay_id
+     * @param amt
+     * @param req_id
      * @return Stations
+     * @throws java.io.IOException
      * @throws SQLException
      */
+    public Map<String,String> RechargeProcess(String pay_id,String req_id) throws IOException, SQLException{
+        Map<String,String> AllData=new HashMap<>();
+        PayMentCheckApi Checker=new PayMentCheckApi();
+        JSONObject jsons=Checker.CheckPaymentProcess(pay_id);
+        if(Objects.equals(jsons.get("success").toString(),"false")){
+             AllData.put("status","failed");
+        }
+        else if(Objects.equals(jsons.get("success").toString(),"true")){
+          
+             JSONObject payment=(JSONObject)jsons.get("payment");
+             if(Objects.equals(payment.get("status").toString(),"Credit")){
+                 if(CheckAlreadyRecharge(pay_id)){
+                    AllData.put("status","already");                 
+                 }
+                 else{
+                   if(UpdateBalance(pay_id, payment.get("amount").toString(), req_id)){
+                      AllData.put("status","success");                    
+                   }
+                   else{
+                      AllData.put("status","admin");                                          
+                   }
+                 }
+                 
+             }
+             else {
+                    AllData.put("status","failed");
+             }
+        } 
+        return AllData;
+    }
+    
+    public Boolean CheckAlreadyRecharge(String pay_id) throws SQLException{
+        Boolean status=true;
+       Statement s=connection.createStatement();
+       String sql="SELECT * FROM `card_recharges` WHERE `paymentid`='"+pay_id+"' and `status`='complete'";
+       ResultSet executeQuery = s.executeQuery(sql);
+       ResultSetMetaData res=executeQuery.getMetaData();
+       int numColumns = res.getColumnCount();
+       int loop=0;
+       while(executeQuery.next())
+       {  
+          loop=1;
+       }
+       if(loop==0){
+           status=false;
+       }
+       else{
+           status=true;
+       }
+
+        return status;
+    }
+    public Boolean UpdateBalance(String Pay_id,String Amt,String id) throws SQLException{
+        Statement s=connection.createStatement();
+        Boolean status=false;
+               int ss= s.executeUpdate("UPDATE `card_recharges` SET `status`='complete',`amount`='"+Amt+"',`paymentid`='"+Pay_id+"' WHERE txn_id='"+id+"'");
+               
+               if(ss>0){
+                   String cardno=GetCarNoByReqId(id);
+                   if(cardno==null){
+                     status=false;                       
+                   }
+                   else{
+                      int ss2=s.executeUpdate("UPDATE `metro_card` SET `balance`=balance+'"+Amt+"' WHERE `card_num`='"+cardno+"'");                       if(ss2>0){
+                          status=true;
+                      }
+                      else{
+                          status=false;
+                      }
+                   }
+                   
+               }
+               else{
+                   status=false;
+               }
+               return status;
+    }
+    public String GetCarNoByReqId(String tx_id) throws SQLException{
+        String card=null;
+       Statement s=connection.createStatement();
+       String sql="SELECT * FROM `card_recharges` WHERE `txn_id`='"+tx_id+"'";
+       ResultSet executeQuery = s.executeQuery(sql);
+       ResultSetMetaData res=executeQuery.getMetaData();
+       int numColumns = res.getColumnCount();
+       while(executeQuery.next())
+       {  
+          for(int i=1;i<=numColumns;i++){
+              if(Objects.equals(res.getColumnLabel(i),"card_num")){
+                  card=executeQuery.getString(i);                  
+              }
+          }
+          break;
+
+      } 
+        return card;
+    }
+    
     public JSONArray GetStation(String key) throws SQLException{
        JSONArray StationList=new JSONArray();
        Statement s=connection.createStatement();

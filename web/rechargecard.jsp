@@ -19,6 +19,7 @@
     <div class="col-lg-9">
         <main>
             <div class="homecontent" style="min-height: 410px">
+                <form action="rechargecardpay.jsp" method="post">
                 <h3>Recharge Your Metro Card Online!</h3>
                 <div class="form-group">
                     <label>Card No.</label>
@@ -35,6 +36,32 @@
                 <div class="form-group">
                     <input type="submit" name="name" class="btn btn-block btn-success" value="Recharge">
                 </div>
+                <% if(request.getParameter("invalid")!=null) { %>
+                <div class="form-group">
+                    <p class="alert alert-danger">Invalid Card Details! Try Again.</p>
+                </div>
+                <% } else if(request.getParameter("failed")!=null) {%>
+                <div class="form-group">
+                    <p class="alert alert-danger">Failed To Reach Payment Server! Try Again.</p>
+                </div>
+                <% } else if(request.getParameter("already")!=null) {%>
+                <div class="form-group">
+                    <p class="alert alert-danger">Your Metro Card Has Already Been Recharged.</p>
+                </div>
+                <% } else if(request.getParameter("success")!=null) {%>
+                <div class="form-group">
+                    <p class="alert alert-success">Your Metro Card Has Been Recharged Successfully.</p>
+                </div>
+                <% } else if(request.getParameter("something")!=null) {%>
+                <div class="form-group">
+                    <p class="alert alert-danger">Something Went Wrong Please Contact Admin.</p>
+                </div>
+                <% } else if(request.getParameter("admin")!=null) {%>
+                <div class="form-group">
+                    <p class="alert alert-info">Your payment has been Done.Please Contact Admin for Update Your Balance Manually!</p>
+                </div>
+                <% } %>
+                </form>
            </div>            
 
         </main>
