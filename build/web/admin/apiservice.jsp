@@ -9,6 +9,7 @@
 <%@page import="java.sql.Statement"%>
 <%@page import="java.util.Objects"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="secure.jsp" %>
 <jsp:useBean id="obj" class="com.metrorail.DataBaseSource"/>  
 <%
      String method=request.getParameter("method");

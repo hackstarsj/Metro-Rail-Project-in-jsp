@@ -1,5 +1,6 @@
 <%@page import="java.util.Map"%>
 <%@page import="java.util.List"%>
+<%@include file="secure.jsp" %>
 <jsp:useBean id="obj" class="com.metrorail.DataBaseSource"/>  
 <%
     Boolean status = false;
