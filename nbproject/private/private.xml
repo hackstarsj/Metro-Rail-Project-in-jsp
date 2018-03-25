@@ -5,15 +5,11 @@
         <group>
             <file>file:/home/sanjeev/NetBeansProjects/MetroRail/web/admin/adminhome.jsp</file>
             <file>file:/home/sanjeev/NetBeansProjects/MetroRail/src/java/com/metrorail/DataBaseSource.java</file>
+            <file>file:/home/sanjeev/NetBeansProjects/MetroRail/src/java/com/metrorail/PayMentCheckApi.java</file>
             <file>file:/home/sanjeev/NetBeansProjects/MetroRail/web/rechargecardpay.jsp</file>
-            <file>file:/home/sanjeev/NetBeansProjects/MetroRail/web/admin/edit_trip.jsp</file>
-            <file>file:/home/sanjeev/NetBeansProjects/MetroRail/web/js/user.js</file>
-            <file>file:/home/sanjeev/NetBeansProjects/MetroRail/web/fair.jsp</file>
-            <file>file:/home/sanjeev/NetBeansProjects/MetroRail/web/admin/admin.jsp</file>
             <file>file:/home/sanjeev/NetBeansProjects/MetroRail/web/rechargecard.jsp</file>
-            <file>file:/home/sanjeev/NetBeansProjects/MetroRail/web/footer.jsp</file>
+            <file>file:/home/sanjeev/NetBeansProjects/MetroRail/web/payresponse.jsp</file>
             <file>file:/home/sanjeev/NetBeansProjects/MetroRail/src/java/com/metrorail/PayMentApi.java</file>
-            <file>file:/home/sanjeev/NetBeansProjects/MetroRail/web/sidebar.jsp</file>
         </group>
     </open-files>
 </project-private>
